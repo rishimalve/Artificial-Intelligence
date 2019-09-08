@@ -1328,26 +1328,3 @@ can be fed into NET-LEARN.  Also adds a bias unit of 0.5 to the input."
 
 ;(simple-generalization (scale-data *mpg*) 3 1.0 5 20000)
 ;(simple-generalization (scale-data *wine*) 3 1.0 5 20000)
-
-
-;;; Report:
-;;; This is an assignment which implements the two layered neural network. The code takes a training data and performs the back-propagation to find the weight matrices v and w. Using those metrices,
-;;; it generalizes the remaining part of the training data.
-;;; 
-;;; I have implemented the net-build function which creates the matrices v and w randomly within the given range of initial-bounds. It then calls the back-propagation function with v and w as
-;;; parameters on the entire set of training data. After getting the new v and w matrices from the back-propagate function, it calls the forward-propagate function which is run on the entire training
-;;; data in modulo iterations. Net-build function prints the error for all the datums at every pass of max-iterations. To calculate the mean and worst errors, I have created a local variable list which stores the errors of all the datums in the training data set. To find the worst error
-;;; I have used the apply function with min as parameter. To calculate the average, I have used the average function provided by the professor.
-;;; 
-;;; In simple-generalization function, I have first called the net-build function on the first half of the data which returns the v and w metrices. Using those metrices I am generalizing the remaining
-;;; half of the training data set. Simple generalization returns the average error among the sample test datums.
-;;; 
-;;; K-fold-validation function also I have implemented in the same way as simple-generalization function. It differs in the size of the data used for the training purposes. To train the network
-;;; k-fold-validation uses (k-1)/k times of the data while for the testing purposes it uses the remining 1/k times of the data. This is I have repeated k times with in each pass of k, I am shuffling
-;;; the training dataset, using the shuffle function provide by the Professor. 
-;;; 
-;;; While testing the network, I came across the particular thing that is that sometimes network doesn't converge the way you would like it to be. This is because, even if the majority of the datum
-;;; have the error close to the good-minimum-error value, still there could be few errors which are significantly higher than the minimum error value. This makes the mean error higher, and it 
-;;; doesn't seem to be converging. Also, I found that, more the iterations you make in net-build, the network gen better.
-;;; 
-;;; Also, while testing the network, I had to run the code in excess of 20 times to get the exact feel of how the neural network is generalizing as it is a stochastic environment.
