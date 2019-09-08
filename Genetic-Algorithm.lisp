@@ -200,28 +200,3 @@ The individuals are guaranteed to be the same length.  Returns NIL."
 	:modifier #'float-vector-modifier
         :evaluator #'sum-f
 	:printer #'simple-printer)
-
-
-;;; Report:
-;;; 
-;;; This project is designed to implement the floating point vector genetic algorithm with different objective functions which calculate the fitenss of the individuals. 
-;;; 
-;;; Initial population is created with float-vector-creator function, which creates the vector of length specified by the varibale float-vector-length. The range of the floating point is decided by
-;;; the varibles flaot-min and float-max. The floating value is alwayas a random value between these two varables.
-;;; 
-;;; I have used float-vector-sum-setup funtion to initilize the global varibales which are required throughout the code such as float-max, float-min etc.
-;;; 
-;;; In unifrom-crossover funtion I have used the rotatef function which swaps the values of two vectors in place so the there's no need to return the values of the new individuals.
-;;; 
-;;; While imlementing the code, I found out that closer the values of both float-min and float-max, better is the fitness of the best individual in the population. Also tournament-size has an effect
-;;; on the fitness of the model as the tournament size increases, fitness of the model decreases gradually. To increase the fitness of the individuals, number of generations should be high, as the 
-;;; model gets to explore more in the space to reach the global optima.
-;;; 
-;;; Results with different objective functions:
-;;; 
-;;; 	              sum-f	      step-f	      spehre-f	       rosenbrock-f	  rastrigin-f	  schwefel-f
-;;; Generaions	    1000	      1000	        1000	           1000	          1000	        1000
-;;; Pop-size	      50	        50	          50	             50	            50	          50
-;;; Fitness Range	  98 to 100   206 to 209    -0.50 to -0.65   -65 to -90     -85 to -125   5000 to 6500
-
-
